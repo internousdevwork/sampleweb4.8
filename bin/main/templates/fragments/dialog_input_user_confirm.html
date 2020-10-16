@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+<th:block th:fragment="dialogInputUserConfirm">
+	<div id="inputUserConfirm" title="入力内容確認" class="hidden">
+		<table class="user confirm">
+			<tr>
+				<th>氏名</th>
+				<td>
+					<span class="familyName"></span>
+					<span class="firstName"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>氏名ふりがな</th>
+				<td>
+					<span class="familyNameKana"></span>
+					<span class="firstNameKana"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>性別</th>
+				<td>
+					<span class="gender"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>ユーザー名<br /><span class="note">（メールアドレス）</span></th>
+				<td>
+					<span class="userName"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<span class="password"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</th:block>
+</body>
+</html>

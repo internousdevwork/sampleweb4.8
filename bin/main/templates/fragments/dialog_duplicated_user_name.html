@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+<th:block th:fragment="dialogDuplicatedUserName">
+	<div id="duplicatedUserName" title="ユーザー名重複" class="hidden">
+		<h2 class="error">
+		入力されたユーザー名はすでに存在しています。<br />
+		別のユーザー名をお試しください。
+		</h2>
+	</div>
+</th:block>
+
+
+</body>
+</html>

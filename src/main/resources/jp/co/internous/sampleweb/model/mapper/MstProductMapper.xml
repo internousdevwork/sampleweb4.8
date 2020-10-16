@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.internous.sampleweb.model.mapper.MstProductMapper">
+	<select id="findByCategoryAndProductName" resultType="jp.co.internous.sampleweb.model.domain.MstProduct">
+		SELECT * FROM mst_product
+		WHERE category_id = #{category} AND
+		<foreach item="keyword" collection="keywords" open="(" close=")" separator=""  index="idx">
+			<choose>
+				<when test="idx == 0">
+					(product_name LIKE '%${keyword}%') 
+				</when>
+				<otherwise>
+					OR (product_name LIKE '%${keyword}%') 
+				</otherwise>
+			</choose>
+		</foreach>
+		ORDER BY id;
+	</select>
+	
+	<select id="findByProductName" resultType="jp.co.internous.sampleweb.model.domain.MstProduct">
+		SELECT * FROM mst_product
+		<foreach item="keyword" collection="keywords" open="" close="" separator="" index="idx">
+			<choose>
+				<when test="idx == 0">
+					WHERE (product_name LIKE '%${keyword}%')
+				</when>
+				<otherwise>
+					OR (product_name LIKE '%${keyword}%')
+				</otherwise>
+			</choose>
+		</foreach>
+		ORDER BY id;
+	</select>
+</mapper>

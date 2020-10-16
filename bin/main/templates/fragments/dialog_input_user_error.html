@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+<th:block th:fragment="dialogInputUserError">
+	<div id="inputUserError" title="ユーザー情報入力エラー" class="hidden">
+		<div class="error familyNameError hidden"></div>
+		<div class="error firstNameError hidden"></div>
+		<div class="error familyNameKanaError hidden"></div>
+		<div class="error firstNameKanaError hidden"></div>
+		<div class="error userNameError hidden"></div>
+		<div class="error passwordError hidden"></div>
+	</div>
+</th:block>
+
+
+</body>
+</html>

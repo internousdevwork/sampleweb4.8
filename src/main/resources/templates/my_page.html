@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<link href="/css/reset.css" th:href="@{/css/reset.css}" rel="stylesheet" />
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+
+<title>Sample Web</title>
+</head>
+<body>
+
+<header th:insert="fragments/page_header::pageHeader"></header>
+
+<main>
+
+	<div class="container">
+		<h2>マイページ</h2>
+		
+		<table class="myPage">
+			<tr>
+				<th>氏名</th>
+				<td>
+					<span class="familyName" th:text="${user.familyName}">山田</span>
+					<span class="firstName" th:text="${user.firstName}">太郎</span>
+				</td>
+			</tr>
+			<tr>
+				<th>氏名ふりがな</th>
+				<td>
+					<span class="familyNameKana" th:text="${user.familyNameKana}">やまだ</span>
+					<span class="firstNameKana" th:text="${user.firstNameKana}">たろう</span>
+				</td>
+			</tr>
+			<tr>
+				<th>性別</th>
+				<td>
+					<span class="gender" th:text="${user.gender == 0 ? '男性' : '女性'}">男性</span>
+				</td>
+			</tr>
+			<tr>
+				<th>ユーザー名<br /><span class="note">（メールアドレス）</span></th>
+				<td>
+					<span class="userName" th:text="${user.userName}">taro@abc.com</span>
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<span class="password">******</span><a href="#" class="resetPassword">再設定</a>
+					<input type="hidden" id="hiddenPassword" th:value="${user.password}" />
+				</td>
+			</tr>
+			<tr>
+				<th class="buttonArea">
+				</th>
+				<th class="buttonArea">
+					<form action="/sampleweb/history/">
+						<button id="historyButton">購入履歴</button>
+					</form>
+				</th>
+			</tr>
+		</table>
+	
+	</div>
+	<!-- Modal Dialog (パスワード再設定) -->
+	<div th:insert="fragments/dialog_reset_password::dialogResetPassword"></div>
+
+</main>
+
+<script>
+$(() => {
+	
+	/* 実際のパスワードの文字数分 「*」 を表示する */
+	let password = $('#hiddenPassword').val();
+		let asters = '';
+	for (let i = 0; i < password.length; i ++) {
+		asters += '*';
+	}
+	$('span.password').text(asters);
+	
+		$('#resetPassword').dialog(dialogConfig.resetPassword);
+	
+		$('a.resetPassword').on('click', (e) => {
+		$("#resetPassword").dialog("open");
+	});
+});
+</script>
+
+</body>
+</html>
