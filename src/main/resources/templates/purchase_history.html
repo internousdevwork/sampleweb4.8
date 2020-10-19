@@ -15,70 +15,80 @@
 <main>
 
 	<div class="container history">
-		<div>
-			<h2>購入履歴</h2>
-		</div>
 		<div class="noData hidden">
 			<p class="info">購入履歴はありません。</p>
+		</div>
+		<div>
+			<h2>購入履歴</h2>
 		</div>
 		<table class="history">
 			<tr>
 				<th>購入日時</th><th>商品名</th><th>価格(円)</th><th>個数</th><th>宛名</th><th>宛先住所</th>
 			</tr>
-			<tr	th:each="history: ${historyList}">
-				<td th:text="${history.purchasedAt}"/>
-			<td th:text="${history.productName}"/>
-				<td th:text="${history.price}"/>
-				<td th:text="${history.productCount}"/>
-				<td><span	th:text ="${history.familyName} + ' ' + ${history.firstName}"></span></td>
-				<td th:text="${history.address}" class="address" />
+			<tr>
+				<td>
+				 2019/12/11 12:00:00
+				</td>
+				<td>バラ</td>
+				<td>1200</td>
+				<td>2</td>
+				<td>山田 太郎</td>
+				<td class="address">東京都豊島区池袋１－１－１</td>
+			</tr>
+			<tr>
+				<td>
+				 2019/12/11 12:00:00
+				</td>
+				<td>ラベンダー</td>
+				<td>1000</td>
+				<td>1</td>
+				<td>山田 太郎</td>
+				<td class="address">東京都豊島区池袋１－１－１</td>
+			</tr>
+			<tr>
+				<td>
+				 2019/12/10 12:00:00
+				</td>
+				<td>オリーブ</td>
+				<td>1400</td>
+				<td>2</td>
+				<td>田中 次郎</td>
+				<td class="address">
+					<div>東京都渋谷区幡ヶ谷２－２－２<br />〇〇ハイツ１０２</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				 2019/12/09 12:00:00
+				</td>
+				<td>アデニウム</td>
+				<td>1000</td>
+				<td>1</td>
+				<td>鈴木 一子</td>
+				<td class="address">
+					<div>千葉県千葉市稲毛区園生３－３－３</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				 2019/12/08 12:00:00
+				</td>
+				<td>シクラメン</td>
+				<td>1000</td>
+				<td>3</td>
+				<td>高橋 五郎</td>
+				<td class="address">
+					<div>埼玉県所沢市山口４－４－４</div>
+				</td>
 			</tr>
 		</table>
 		<div class="buttonArea">
-			<button id="deleteButton">削除</button>
+			<button>削除</button>
 		</div>
 	
 	</div>
 
 </main>
-<script th:inline="javascript">
-/*<![CDATA[*/
-$(() => {
-	isExistsHistoryList(false);	// 引数(削除済)にfalseを指定
-	$('#deleteButton').on('click', () => {
-		deleteHistory();
-	});
-});
-
-function isExistsHistoryList(deleted) {
-	let histroryListSize = /*[[${historyList.size()}]]*/;
-	
-	//リストのサイズが0　もしくは　テーブルヘッダー以外の行がなければ
-	if (histroryListSize == 0 || deleted) {
-		// 情報なしメッセージを表示
-		$('.noData').removeClass('hidden');
-		
-		//テーブルのtrを非表示
-		$('.history tr').remove();
-		
-		// ボタンを非表示
-		$('.buttonArea').remove();
-	}
-}
-
-function deleteHistory() {
-	$.ajax({
-		type: 'POST',
-		url: '/sampleweb/history/delete'
-	})
-	.then((result) => {
-		isExistsHistoryList(true);	// 引数(削除済)にtrueを指定
-	}, () => {
-		alert('Error: ajax connection failed.');
-	});		
-}
-/*]]>*/
-</script>
 
 </body>
 </html>

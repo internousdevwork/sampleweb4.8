@@ -15,68 +15,51 @@
 <main>
 
 	<div class="container cart">
-		<div>
-			<h2 th:if="${destinations != null && destinations.size() > 0}">宛先を選択し、決済を完了します。</h2>
-			<p class="info"	th:if="${destinations != null && destinations.size() > 0}">宛先の新規登録、削除も可能です。</p>
-			<p class="info"	th:if="${destinations == null || destinations.size() == 0}">宛先情報がありません。新規登録してください。</p>
+		<div class="completed hidden">
+			<p class="info">決済が完了しました。</p>
 		</div>
-		<table class="destination"	th:if="${destinations != null && destinations.size() > 0}" >
+		<div>
+			<h2>宛先を選択し、決済を完了します。</h2>
+			<p class="info">宛先の新規登録、削除も可能です。</p>
+		</div>
+		<table class="destination">
 			<tr>
 				<th>選択</th><th>宛先氏名</th><th>住所</th><th>電話番号</th>
 			</tr>
-			<tr th:each="destination, st: ${destinations}" >
-				<td><input type="radio" name="id" th:checked="${st.index==0}"	th:value="${destination.id}" class="radio" /></td>
+			<tr>
 				<td>
-					<span th:text="${destination.familyName}"></span><span>　</span><span th:text="${destination.firstName}"></span>
+				 <input type="radio" checked />
 				</td>
-				<td th:text="${destination.address}"/>
-				<td th:text="${destination.telNumber}"/>
+				<td>田中　次郎</td>
+				<td>東京都豊島区池袋１－１－１</td>
+				<td>0311112222</td>
+			</tr>
+			<tr>
+				<td>
+				 <input type="radio" />
+				</td>
+				<td>木村　一子</td>
+				<td>東京都世田谷区等々力２－２－２</td>
+				<td>0399998888</td>
+			</tr>
+			<tr>
+				<td>
+				 <input type="radio" />
+				</td>
+				<td>鈴木　三郎</td>
+				<td>千葉県千葉市稲毛区園生３－３－３</td>
+				<td>09011112222</td>
 			</tr>
 		</table>
 		<div class="buttonArea">
-			<button id="deleteButton" th:if="${destinations != null && destinations.size() > 0}">削除</button>
-			<form name="destinationForm" action="/sampleweb/destination/">
-				<button type="submit" >新規宛先</button>
-			</form>
-			<button th:if="${destinations != null && destinations.size() > 0}" id="settlementButton">決済</button>
+			<button>削除</button>
+			<button>新規宛先</button>
+			<button>決済</button>
 		</div>
-	</div>
-</main>
-<script>
-$(() => {
-	$('#deleteButton').on('click', () => {
-		let checked = $('.radio:checked');
-		let destinationId = $(checked).val();
-		deleteDestination(destinationId, checked);
-	});
 	
-	$('#settlementButton').on('click', () => {
-		let checked = $('.radio:checked');
-		let destinationId = $(checked).val();
-		settlement(destinationId);
-	});
-});
+	</div>
 
-function deleteDestination(destinationId, checked) {
-	$.ajax({
-		type: 'POST',
-		url: '/sampleweb/destination/delete',
-		data: JSON.stringify({'destinationId': destinationId}),
-		datatype: 'json',
-		contentType: 'application/json',
-	})
-	.then((result) => {
-		$(checked).parent().parent().remove();
-		let radioList = $('.radio');
-		if (radioList.length == 0) {
-			location.replace('/sampleweb/settlement/');
-		}
-		radioList[0].checked = true;
-	}, () => {
-		alert('Error: ajax connection failed.');
-	});
-}
-</script>
+</main>
 
 </body>
 </html>

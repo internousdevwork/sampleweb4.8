@@ -1,11 +1,15 @@
 HELP.md
+bin/
+bin/main/
+bin/test/
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
+/.metadata/
 .apt_generated
 .classpath
 .factorypath
@@ -20,8 +24,6 @@ build/
 *.iml
 *.ipr
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
 ### NetBeans ###
 /nbproject/private/

@@ -21,41 +21,40 @@
 			<tr>
 				<th>氏名</th>
 				<td>
-					<span class="familyName" th:text="${user.familyName}">山田</span>
-					<span class="firstName" th:text="${user.firstName}">太郎</span>
+					<span class="familyName">山田</span>
+					<span class="firstName">太郎</span>
 				</td>
 			</tr>
 			<tr>
 				<th>氏名ふりがな</th>
 				<td>
-					<span class="familyNameKana" th:text="${user.familyNameKana}">やまだ</span>
-					<span class="firstNameKana" th:text="${user.firstNameKana}">たろう</span>
+					<span class="familyNameKana">やまだ</span>
+					<span class="firstNameKana">たろう</span>
 				</td>
 			</tr>
 			<tr>
 				<th>性別</th>
 				<td>
-					<span class="gender" th:text="${user.gender == 0 ? '男性' : '女性'}">男性</span>
+					<span class="gender">男性</span>
 				</td>
 			</tr>
 			<tr>
 				<th>ユーザー名<br /><span class="note">（メールアドレス）</span></th>
 				<td>
-					<span class="userName" th:text="${user.userName}">taro@abc.com</span>
+					<span class="userName">taro@abc.com</span>
 				</td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
 				<td>
 					<span class="password">******</span><a href="#" class="resetPassword">再設定</a>
-					<input type="hidden" id="hiddenPassword" th:value="${user.password}" />
 				</td>
 			</tr>
 			<tr>
 				<th class="buttonArea">
 				</th>
 				<th class="buttonArea">
-					<form action="/sampleweb/history/">
+					<form action="">
 						<button id="historyButton">購入履歴</button>
 					</form>
 				</th>
@@ -70,15 +69,6 @@
 
 <script>
 $(() => {
-	
-	/* 実際のパスワードの文字数分 「*」 を表示する */
-	let password = $('#hiddenPassword').val();
-		let asters = '';
-	for (let i = 0; i < password.length; i ++) {
-		asters += '*';
-	}
-	$('span.password').text(asters);
-	
 		$('#resetPassword').dialog(dialogConfig.resetPassword);
 	
 		$('a.resetPassword').on('click', (e) => {

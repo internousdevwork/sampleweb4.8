@@ -8,12 +8,14 @@
 
 <th:block th:fragment="dialogInputDestinationError">
 	<div id="inputDestinationError" title="宛先情報入力エラー" class="hidden">
-		<div class="error familyNameError hidden"></div>
+		<div class="error familyNameError">
+		 「宛先 姓」が空欄です。
+		</div>
 		<div class="error firstNameError hidden"></div>
 		<div class="error telNumberError hidden"></div>
-		<div class="error addressError hidden"></div>
 	</div>
 </th:block>
+
 
 </body>
 </html>

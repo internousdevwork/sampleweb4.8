@@ -16,51 +16,35 @@
 
 	<div class="container">
 		<table class="top">
-			<caption><label th:text="${product.productName}"></label>（<label th:text="${product.productNameKana}"></label>）</caption>
+			<caption>バラ（ばら）</caption>
 			<tr>
 				<th>画像</th><th>価格</th><th>発売元</th><th>発売年月日</th>
 			</tr>
 			<tr>
 				<td class="imageDetail">
-					<img class="itemImageDetail" th:src="@{{imagePath} (imagePath=${product.imageFullPath}) }" alt="" />
+					<img class="itemImageDetail" src="/img/may/rose.jpg" alt="" />
 				</td>
-				<td class="number" th:text="${product.price} + '円'"/>
-				<td th:text="${product.releaseCompany}"/>
-				<td th:text="${product.releaseDate}"/>
+				<td class="number">1200円</td>
+				<td>城ノ越園芸</td>
+				<td>2019/12/10</td>
 			</tr>
 		</table>
+		<form action="">
 			<label id="description">商品説明</label>
-			<textarea cols="75" rows="5" readonly th:text="${product.productDescription}" ></textarea>
+			<textarea cols="75" rows="5" readonly>あああああああああああああああああああああ。&#13;いいいいいいいいいいいいいい。&#13;ううううううううううううううううううううう。
+			</textarea>
 			
 			<hr />
-		<form>			
+			
 			<div class="buttonArea">
 				<label>購入個数</label>
-				<input type="number" id="productCount" name="productCount" class="count number" value="0" min="0" step="1"/>
-				<input type="hidden" name="productId" th:value="${product.id}"/>
-				<button class="cartButton">カートに追加</button>
+				<input type="number" class="count number" value="0"/>
+				<button type="submit">カートに追加</button>
 			</div>
 		</form>
 	</div>
 
 </main>
 
-<script>
-$(() => {
-	$('.cartButton').on('click', () => {
-		let productCount = $('#productCount').val();
-		
-		if (productCount == 0) {
-			alert("個数が0です。");
-			return;
-		}
-		
-		$('form').attr('action', '/sampleweb/cart/add');
-		$('form').submit();
-	});
-});
-
-
-</script>
 </body>
 </html>

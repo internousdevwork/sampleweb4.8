@@ -15,14 +15,14 @@
 <main>
 
 	<div class="container">
-	<h2>宛先登録</h2>
-	
-	<table id="register" class="user">
+		<h2>宛先登録</h2>
+		
+<table id="register" class="user">
 		<tr>
 		<th>宛先氏名</th>
 		<td>
-			<input type="text" name="familyName" th:value="${user.familyName}" placeholder="宛先 姓" maxlength="16" />
-			<input type="text" name="firstName"	th:value="${user.firstName}" placeholder="宛先 名" maxlength="16" />
+			<input type="text" name="familyName" placeholder="宛先 姓" maxlength="16" />
+			<input type="text" name="firstName"	placeholder="宛先 名" maxlength="16" />
 		</td>
 		</tr>
 		<tr>
@@ -65,10 +65,6 @@ const errorSelector = {
 	'住所': '.addressError',
 };
 $(() => {
-	$('#resetButton').on('click', () => {
-		 $('table').find("input").val("");
-	});
-	
 	$('button#confirm').on('click', () => {
 		// 入力チェック処理(validate.js:validate(checkerConfig))を呼び出す
 		// 引数はvalidate.js:checkerからチェックしたい項目の変数の宣言を作成する
@@ -93,7 +89,6 @@ $(() => {
 			$("#inputDestinationConfirm").dialog("open");
 		}
 	});
-
 });
 
 //jQuery-UIダイアログの初期設定

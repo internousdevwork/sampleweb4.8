@@ -58,7 +58,7 @@
 					<span class="info hidden">登録が完了しました。</span>
 				</th>
 				<th class="buttonArea">
-					<button id="confirm" disabled>確認</button>
+					<button id="confirm">確認</button>
 				</th>
 			</tr>
 		</table>
@@ -140,24 +140,7 @@ function checkUserName(userName) {
 			return;
 		}
 	
-	$.ajax({
-		type: 'POST',
-		url: '/sampleweb/user/duplicatedUserName',
-		data: userName,
-		scriptCharset: 'utf-8'
-	})
-	.then((result) => {
-		if (result) {	// 重複あり
-			$('button#confirm').prop('disabled', true);
-			$("#duplicatedUserName").dialog("open");
-			$('span#checkOK').prop('class', 'hidden');
-		} else {			// 重複なし
-			$('button#confirm').prop('disabled', false);
-			$('span#checkOK').prop('class', 'info');
-		}
-	}, () => {
-		alert('Error: ajax connection failed.');
-	});
+	$("#duplicatedUserName").dialog("open");
 }
 
 </script>
