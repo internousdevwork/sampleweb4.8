@@ -51,6 +51,7 @@ $(() => {
 });
 
 function isExistsHistoryList(deleted) {
+	// Thymeleafを使うための書き方がJSの構文にあっていないため表示されるエラーなので無視する
 	let histroryListSize = /*[[${historyList.size()}]]*/;
 	
 	//リストのサイズが0　もしくは　テーブルヘッダー以外の行がなければ

@@ -69,6 +69,7 @@ $(() => {
 	$('.checkList').on('change', changeDisable);
 	
 	$('#settlementButton').on('click', function() {
+		// Thymeleafを使うための書き方がJSの構文にあっていないため表示されるエラーなので無視する
 		let userId = /*[[${loginSession.getUserId()}]]*/;
 		if (userId == 0 && isEmpty($('#hiddenUserName').val())) {
 			alert("ログインしてください。");
