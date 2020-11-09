@@ -57,7 +57,7 @@ public class IndexController {
 
 		String keywords = f.getKeywords().replaceAll("　", " ").replaceAll("\\s{2,}", " ").trim();
 		if (f.getCategory() == 0) {
-			// 
+			// カテゴリー未選択の状態
 			products = productMapper.findByProductName(keywords.split(" "));
 		} else {
 			products = productMapper.findByCategoryAndProductName(f.getCategory(), keywords.split(" "));
