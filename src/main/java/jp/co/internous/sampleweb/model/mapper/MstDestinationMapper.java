@@ -27,8 +27,4 @@ public interface MstDestinationMapper {
 	
 	@Update("UPDATE mst_destination SET status = 0, updated_at = now() WHERE id = #{id}")
 	int logicalDeleteById(@Param("id") int id);
-	
-	@Select("SELECT id FROM mst_destination WHERE user_id = #{userId} ORDER BY created_at DESC LIMIT 0, 1")
-	int findIdByUserId(@Param("userId") int userId);
-	
 }

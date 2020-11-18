@@ -66,7 +66,7 @@ public class DestinationController {
 		// 登録した宛先のIDを取得
 		Integer id = 0;
 		if (count > 0) {
-			id = destinationMapper.findIdByUserId(userId);
+			id = destination.getId();
 		}
 		return id.toString();
 	}
