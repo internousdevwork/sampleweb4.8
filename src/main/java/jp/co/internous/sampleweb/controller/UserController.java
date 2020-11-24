@@ -1,5 +1,7 @@
 package jp.co.internous.sampleweb.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import jp.co.internous.sampleweb.model.domain.MstUser;
 import jp.co.internous.sampleweb.model.form.UserForm;
@@ -23,6 +27,8 @@ public class UserController {
 	@Autowired
 	private LoginSession loginSession;
 	
+	private Gson gson = new Gson();
+	
 	@RequestMapping("/")
 	public String index(Model m) {
 		m.addAttribute("loginSession",loginSession);
@@ -30,10 +36,13 @@ public class UserController {
 		return "register_user";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/duplicatedUserName")
 	@ResponseBody
-	public boolean duplicatedUserName(@RequestParam String userName) {		
-		int count = userMapper.findCountByUserName(userName);
+	public boolean duplicatedUserName(@RequestBody String userName) {
+		Map<String, String> map = gson.fromJson(userName, Map.class);
+		String name = map.get("userName");
+		int count = userMapper.findCountByUserName(name);
 		return count > 0;
 	}
 	

@@ -95,8 +95,8 @@ $(() => {
 	$('#inputUserConfirm').dialog(dialogConfig.inputUserConfirm);
 	
 	$('button#checkUserName').on('click', () => {
-		let userName = $('table#register input[name=userName]');
-		if (isEmpty($(userName).val())) return;
+		let userName = $('table#register input[name=userName]').val();
+		if (isEmpty(userName)) return;
 		checkUserName(userName);
 	});
 	
@@ -135,16 +135,16 @@ $(() => {
 function checkUserName(userName) {
 	let errInfo = validate({ 'userName': checker.userName });
 	if (errInfo.isError) {
-			createErrorDialog(errInfo.errMsg);
-			$("#inputUserError").dialog("open");
-			return;
-		}
-	
+		createErrorDialog(errInfo.errMsg);
+		$("#inputUserError").dialog("open");
+		return;
+	}
 	$.ajax({
 		type: 'POST',
 		url: '/sampleweb/user/duplicatedUserName',
-		data: userName,
-		scriptCharset: 'utf-8'
+		data: JSON.stringify({'userName': userName}),
+		datatype: 'json',
+		contentType: 'application/json',
 	})
 	.then((result) => {
 		if (result) {	// 重複あり
