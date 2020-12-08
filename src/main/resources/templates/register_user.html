@@ -95,8 +95,8 @@ $(() => {
 	$('#inputUserConfirm').dialog(dialogConfig.inputUserConfirm);
 	
 	$('button#checkUserName').on('click', () => {
-		let userName = $('table#register input[name=userName]');
-		if (isEmpty($(userName).val())) return;
+		let userName = $('table#register input[name=userName]').val();
+		if (isEmpty(userName)) return;
 		checkUserName(userName);
 	});
 	
