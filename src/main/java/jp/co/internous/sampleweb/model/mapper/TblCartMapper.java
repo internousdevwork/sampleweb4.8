@@ -38,8 +38,10 @@ public interface TblCartMapper {
 	@Select("SELECT count(id) FROM tbl_cart WHERE user_id = #{userId} AND product_id = #{productId}")
 	int findCountByUserIdAndProuductId(@Param("userId") int userId, @Param("productId") int productId);
 	
-	@Delete("DELETE FROM tbl_cart WHERE id = #{id}")
-	int deleteById(@Param("id") int id);
+//	@Delete("DELETE FROM tbl_cart WHERE id = #{id}")
+//	int deleteById(@Param("id") int id);
+	
+	int deleteById(@Param("checkedIds") List<String> checkedIds);
 	
 	@Delete("DELETE FROM tbl_cart WHERE user_id = #{userId}")
 	int deleteByUserId(@Param("userId") int userId);

@@ -77,10 +77,10 @@ public class CartController {
 		
 		Map<String, List<String>> map = gson.fromJson(checkedIdList, Map.class);
 		List<String> checkedIds = map.get("checkedIdList");
-		for (String id : checkedIds) {
-			result += cartMapper.deleteById(Integer.parseInt(id));
-		}
-		
+//		for (String id : checkedIds) {
+//			result += cartMapper.deleteById(Integer.parseInt(id));
+//		}
+		result = cartMapper.deleteById(checkedIds);
 		return result > 0;
 	}
 }
