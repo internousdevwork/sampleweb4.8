@@ -40,10 +40,8 @@ public class UserController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/duplicatedUserName")
 	@ResponseBody
-	public boolean duplicatedUserName(@RequestBody String userName) {
-		Map<String, String> map = gson.fromJson(userName, Map.class);
-		String name = map.get("userName");
-		int count = userMapper.findCountByUserName(name);
+	public boolean duplicatedUserName(@RequestBody UserForm f) {
+		int count = userMapper.findCountByUserName(f.getUserName());
 		return count > 0;
 	}
 	
