@@ -43,6 +43,7 @@ public class SettlementController {
 		
 		List<MstDestination> destinations = destinationMapper.findByUserId(userId);
 		m.addAttribute("destinations", destinations);
+		// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
 		m.addAttribute("loginSession",loginSession);
 		
 		return "settlement";

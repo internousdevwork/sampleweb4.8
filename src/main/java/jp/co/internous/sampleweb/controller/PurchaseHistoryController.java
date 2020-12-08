@@ -27,6 +27,7 @@ public class PurchaseHistoryController {
 		List<PurchaseHistoryDto> historyList = purchaseHistoryMapper.findByUserId(userId);
 		
 		m.addAttribute("historyList", historyList);
+		// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
 		m.addAttribute("loginSession",loginSession);
 		
 		return "purchase_history";

@@ -31,6 +31,7 @@ public class UserController {
 	
 	@RequestMapping("/")
 	public String index(Model m) {
+		// page_header.htmlでsessionの変数を表示させているため、loginSessionを画面に送る。
 		m.addAttribute("loginSession",loginSession);
 		
 		return "register_user";

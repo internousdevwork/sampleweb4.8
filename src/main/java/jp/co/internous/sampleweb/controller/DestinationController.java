@@ -37,6 +37,7 @@ public class DestinationController {
 		MstUser user = userMapper.findByUserNameAndPassword(loginSession.getUserName(),loginSession.getPassword());
 		
 		m.addAttribute("user", user);
+		// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
 		m.addAttribute("loginSession",loginSession);
 		return "destination";
 	}

@@ -37,6 +37,8 @@ public class CartController {
 
 		//　カート情報を取得
 		List<CartDto> carts = cartMapper.findByUserId(userId);
+		
+		// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
 		m.addAttribute("loginSession",loginSession);
 		m.addAttribute("carts",carts);
 		return "cart";
@@ -60,6 +62,7 @@ public class CartController {
 		}
 		if (result > 0) {
 			List<CartDto> carts = cartMapper.findByUserId(userId);
+			// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
 			m.addAttribute("loginSession",loginSession);
 			m.addAttribute("carts",carts);
 		}		
