@@ -23,11 +23,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		ORDER BY updated_at DESC, created_at DESC;
 	</select>
 	<delete id="deleteById">
-	    DELETE
-	    FROM tbl_cart
-	    WHERE id IN 
-	    <foreach item="item" index="index" collection="checkedIds" open="(" separator="," close=")">
-	        #{item}
-	    </foreach>
+		DELETE
+		FROM tbl_cart
+		WHERE id IN 
+		<foreach item="checkedId" index="index" collection="checkedIds" open="(" separator="," close=")">
+			#{checkedId}
+		</foreach>
 	</delete>
 </mapper>
