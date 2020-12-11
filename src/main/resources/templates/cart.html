@@ -69,7 +69,7 @@ $(() => {
 	$('.checkList').on('change', changeDisable);
 	
 	$('#settlementButton').on('click', function() {
-		let userId = /*[[${loginSession.getUserId()}]]*/null;
+		let userId = /*[[${loginSession.getUserId()}]]*/ 0;
 		if (userId == 0 && isEmpty($('#hiddenUserName').val())) {
 			alert("ログインしてください。");
 			return false;
