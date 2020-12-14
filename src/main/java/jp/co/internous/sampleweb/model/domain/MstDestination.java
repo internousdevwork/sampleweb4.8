@@ -11,7 +11,7 @@ public class MstDestination {
 	private String firstName;
 	private String telNumber;
 	private String address;
-	private int status;
+	private byte status;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
@@ -62,10 +62,10 @@ public class MstDestination {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getStatus() {
+	public byte getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(byte status) {
 		this.status = status;
 	}
 	public Timestamp getCreatedAt() {

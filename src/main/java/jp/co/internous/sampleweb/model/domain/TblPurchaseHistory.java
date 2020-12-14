@@ -9,7 +9,7 @@ public class TblPurchaseHistory {
 	private int productCount;
 	private int price;
 	private int destinationId;
-	private int status;
+	private byte status;
 	private Timestamp purchasedAt;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
@@ -51,10 +51,10 @@ public class TblPurchaseHistory {
 	public void setDestinationId(int destinationId) {
 		this.destinationId = destinationId;
 	}
-	public int getStatus() {
+	public byte getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(byte status) {
 		this.status = status;
 	}
 	public Timestamp getPurchasedAt() {

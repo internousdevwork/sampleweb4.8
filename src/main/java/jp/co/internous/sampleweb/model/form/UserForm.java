@@ -10,7 +10,7 @@ public class UserForm implements Serializable {
 	private String firstName;
 	private String familyNameKana;
 	private String firstNameKana;
-	private int gender;
+	private byte gender;
 	private String password;
 	private String newPassword;
 	private String newPasswordConfirm;
@@ -45,10 +45,10 @@ public class UserForm implements Serializable {
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
-	public int getGender() {
+	public byte getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(byte gender) {
 		this.gender = gender;
 	}
 	public String getPassword() {

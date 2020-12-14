@@ -13,7 +13,7 @@ public class MstUser {
 	private String firstName;
 	private String familyNameKana;
 	private String firstNameKana;
-	private int gender;
+	private byte gender;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
@@ -71,10 +71,10 @@ public class MstUser {
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
-	public int getGender() {
+	public byte getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(byte gender) {
 		this.gender = gender;
 	}
 	public Timestamp getCreatedAt() {
