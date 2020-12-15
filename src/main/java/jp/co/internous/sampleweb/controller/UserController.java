@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-
 import jp.co.internous.sampleweb.model.domain.MstUser;
 import jp.co.internous.sampleweb.model.form.UserForm;
 import jp.co.internous.sampleweb.model.mapper.MstUserMapper;
