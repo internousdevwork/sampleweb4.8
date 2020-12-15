@@ -1,13 +1,10 @@
 package jp.co.internous.sampleweb.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -26,9 +23,7 @@ public class UserController {
 	
 	@Autowired
 	private LoginSession loginSession;
-	
-	private Gson gson = new Gson();
-	
+		
 	@RequestMapping("/")
 	public String index(Model m) {
 		// page_header.htmlでsessionの変数を表示させているため、loginSessionを画面に送る。
@@ -37,7 +32,6 @@ public class UserController {
 		return "register_user";
 	}
 	
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/duplicatedUserName")
 	@ResponseBody
 	public boolean duplicatedUserName(@RequestBody UserForm f) {
