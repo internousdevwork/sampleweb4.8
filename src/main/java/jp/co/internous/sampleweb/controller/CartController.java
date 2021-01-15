@@ -24,35 +24,35 @@ public class CartController {
 
 	@Autowired
 	private TblCartMapper cartMapper;
-	
+
 	@Autowired
 	private LoginSession loginSession;
-	
+
 	private Gson gson = new Gson();
-	
+
 	@RequestMapping("/")
 	public String index(Model m) {
 		// ユーザーIDを取得
 		int userId = loginSession.getLogined() ? loginSession.getUserId() : loginSession.getTmpUserId();
 
-		//　カート情報を取得
+		// カート情報を取得
 		List<CartDto> carts = cartMapper.findByUserId(userId);
-		
+
 		// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
-		m.addAttribute("loginSession",loginSession);
-		m.addAttribute("carts",carts);
+		m.addAttribute("loginSession", loginSession);
+		m.addAttribute("carts", carts);
 		return "cart";
 	}
-	
+
 	@RequestMapping("/add")
 	public String addCart(CartForm f, Model m) {
-		
+
 		// ユーザーIDを取得
 		int userId = loginSession.getLogined() ? loginSession.getUserId() : loginSession.getTmpUserId();
 
 		f.setUserId(userId);
-		
-		//　カートテーブルに挿入/更新
+
+		// カートテーブルに挿入/更新
 		TblCart cart = new TblCart(f);
 		int result = 0;
 		if (cartMapper.findCountByUserIdAndProuductId(userId, f.getProductId()) > 0) {
@@ -63,20 +63,21 @@ public class CartController {
 		if (result > 0) {
 			List<CartDto> carts = cartMapper.findByUserId(userId);
 			// page_header.htmlでsessionの変数を表示させているため、loginSessionも画面に送る。
-			m.addAttribute("loginSession",loginSession);
-			m.addAttribute("carts",carts);
-		}		
+			m.addAttribute("loginSession", loginSession);
+			m.addAttribute("carts", carts);
+		}
 		return "cart";
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/delete")
 	@ResponseBody
 	public boolean deleteCart(@RequestBody String checkedIdList) {
 		int result = 0;
-		
+
 		Map<String, List<String>> map = gson.fromJson(checkedIdList, Map.class);
 		List<String> checkedIds = map.get("checkedIdList");
+//		 １回のSQLで消すように変更したためこちらはコメントアウトする
 //		for (String id : checkedIds) {
 //			result += cartMapper.deleteById(Integer.parseInt(id));
 //		}
