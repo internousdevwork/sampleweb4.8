@@ -13,6 +13,10 @@ import jp.co.internous.sampleweb.model.domain.MstDestination;
 
 @Mapper
 public interface MstDestinationMapper {
+	
+	// @Options(useGeneratedKeys=true, keyProperty="id")
+	// 上記のアノテーションを使うことで自動連番されたidを
+	// 取得し、domainのidに設定ことができる
 	@Insert ("INSERT INTO mst_destination ("
 			+ "user_id, family_name, first_name, tel_number, address"
 			+ ") "
