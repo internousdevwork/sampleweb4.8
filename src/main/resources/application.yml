@@ -19,4 +19,9 @@ logging:
   level:
     org:
       springframework: WARN
-      '[jp.co.internous.sampleweb.model.mapper]': DEBUG
+    jp:
+      co:
+        internous:
+          sampleweb:
+            model:
+              mapper: DEBUG
