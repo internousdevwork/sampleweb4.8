@@ -77,7 +77,7 @@ public class CartController {
 
 		Map<String, List<String>> map = gson.fromJson(checkedIdList, Map.class);
 		List<String> checkedIds = map.get("checkedIdList");
-//		 １回のSQLで消すように変更したためこちらはコメントアウトする
+
 //		for (String id : checkedIds) {
 //			result += cartMapper.deleteById(Integer.parseInt(id));
 //		}
