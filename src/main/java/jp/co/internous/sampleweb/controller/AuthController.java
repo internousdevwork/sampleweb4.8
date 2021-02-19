@@ -76,15 +76,15 @@ public class AuthController {
 		
 		MstUser user = userMapper.findByUserNameAndPassword(f.getUserName(), f.getPassword());
 		if (user == null) {
-			message = "現在のパスワードが正しくありません。";
+			return "現在のパスワードが正しくありません。";
 		}
 		
 		if (user.getPassword().equals(newPassword)) {
-			message = "現在のパスワードと同一文字列が入力されました。";
+			return "現在のパスワードと同一文字列が入力されました。";
 		}
 		
 		if (!newPassword.equals(newPasswordConfirm)) {
-			message = "新パスワードと確認用パスワードが一致しません。";
+			return "新パスワードと確認用パスワードが一致しません。";
 		}
 		// mst_userとloginSessionのパスワードを更新する
 		userMapper.updatePassword(user.getUserName(), f.getNewPassword());
