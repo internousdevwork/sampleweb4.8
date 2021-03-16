@@ -50,6 +50,11 @@ $(() => {
 	});
 });
 
+/**
+ * 表示する購入履歴情報があるか判定する。
+ * @param deleted 削除済か判定するフラグ。true:削除済、false:未削除
+ * @returns なし
+ */
 function isExistsHistoryList(deleted) {
 	let histroryListSize = /*[[${historyList.size()}]]*/ 0;
 	
@@ -66,6 +71,11 @@ function isExistsHistoryList(deleted) {
 	}
 }
 
+/**
+ * 購入履歴を削除する。
+ * @param なし
+ * @returns なし
+ */
 function deleteHistory() {
 	$.ajax({
 		type: 'POST',
