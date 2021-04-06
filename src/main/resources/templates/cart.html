@@ -78,6 +78,11 @@ $(() => {
 	
 });
 
+/**
+ * 選択されたカート情報を削除する。
+ * @param checkedList:選択されたチェックボックスのリスト、checkedIdList:選択されたチェックボックスの値のリスト
+ * @returns なし
+ */
 function deleteCart(checkedList, checkedIdList) {
 	$.ajax({
 		type: 'POST',
@@ -104,6 +109,11 @@ function deleteCart(checkedList, checkedIdList) {
 	});		
 }
 
+/**
+ * 削除ボタンの活性非活性を変更する。
+ * @param チェックボックスが選択された際のevent
+ * @returns なし
+ */
 let changeDisable = (event) => {
 	let checkList = $('.checkList');
 	let disabled = true;
@@ -116,6 +126,11 @@ let changeDisable = (event) => {
 	$("#deleteButton").prop("disabled", disabled);
 }
 
+/**
+ * 合計個数、合計金額を計算する。
+ * @param なし
+ * @returns なし
+ */
 function calcTotalArea() {
 	let subtotalList = $('.subtotal');
 	let countList = $('.productCount');
