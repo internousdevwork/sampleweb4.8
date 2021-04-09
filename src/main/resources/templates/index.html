@@ -64,6 +64,11 @@ $(() => {
 	$('.cartButton').on('click', addCart);	
 });
 
+/**
+ * カートに追加処理を行う。
+ * @param 追加ボタンが押下された際のevent
+ * @returns なし
+ */
 let addCart = (event) => {
 	let tr = $(event.target).parent().parent();
 	let productId = $(tr).find('#productId').val();
