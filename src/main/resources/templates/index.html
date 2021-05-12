@@ -61,25 +61,14 @@
 
 <script>
 $(() => {
-	$('.cartButton').on('click', addCart);	
+	$('.cartButton').on('click', (event) => {
+		let tr = $(event.target).parent().parent();
+		let productId = $(tr).find('#productId').val();
+		let productCount = $(tr).find('#productCount').val();
+		addCart(productId, productCount);
+	});	
 });
 
-/**
- * カートに追加処理を行う。
- * @param 追加ボタンが押下された際のevent
- * @returns なし
- */
-let addCart = (event) => {
-	let tr = $(event.target).parent().parent();
-	let productId = $(tr).find('#productId').val();
-	let productCount = $(tr).find('#productCount').val();
-	
-	if (productCount == 0) {
-		alert("個数が0です。");
-		return ;	
-	}
-	location.replace(`/sampleweb/cart/add?productId=${productId}&productCount=${productCount}`);
-}
 
 </script>
 
