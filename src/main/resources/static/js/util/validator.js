@@ -264,7 +264,7 @@ function clearErrorDialog() {
  * @returns なし
  */
 function addCart(productId, productCount) {
-		if (productCount == 0) {
+	if (productCount == 0) {
 		alert("個数が0です。");
 		return ;	
 	}
