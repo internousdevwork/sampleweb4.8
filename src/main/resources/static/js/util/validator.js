@@ -257,3 +257,16 @@ function clearErrorDialog() {
 		}
 	}
 }
+
+/**
+ * カートに追加処理をおこなう
+ * @param productId 商品情報ID、productCount 商品個数
+ * @returns なし
+ */
+function addCart(productId, productCount) {
+		if (productCount == 0) {
+		alert("個数が0です。");
+		return ;	
+	}
+	location.replace(`/sampleweb/cart/add?productId=${productId}&productCount=${productCount}`);
+}
