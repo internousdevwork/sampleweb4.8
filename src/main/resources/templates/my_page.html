@@ -70,18 +70,16 @@
 
 <script>
 $(() => {
-	
 	/* 実際のパスワードの文字数分 「*」 を表示する */
 	let password = $('#hiddenPassword').val();
-		let asters = '';
+	let asters = '';
 	for (let i = 0; i < password.length; i ++) {
 		asters += '*';
 	}
 	$('span.password').text(asters);
+	$('#resetPassword').dialog(dialogConfig.resetPassword);
 	
-		$('#resetPassword').dialog(dialogConfig.resetPassword);
-	
-		$('a.resetPassword').on('click', (e) => {
+	$('a.resetPassword').on('click', (e) => {
 		$("#resetPassword").dialog("open");
 	});
 });
