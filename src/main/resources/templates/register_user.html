@@ -132,6 +132,11 @@ $(() => {
 	});
 });
 
+/**
+ * ユーザー名の重複チェックをおこなう。
+ * @param userName ユーザー名
+ * @returns なし
+ */
 function checkUserName(userName) {
 	let errInfo = validate({ 'userName': checker.userName });
 	if (errInfo.isError) {

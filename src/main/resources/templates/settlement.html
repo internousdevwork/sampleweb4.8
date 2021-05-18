@@ -57,6 +57,11 @@ $(() => {
 	});
 });
 
+/**
+ * 宛先情報を削除する。
+ * @param destinationId 宛先情報ID、checked 選択されたラジオボタンのオブジェクト
+ * @returns なし
+ */
 function deleteDestination(destinationId, checked) {
 	$.ajax({
 		type: 'POST',
