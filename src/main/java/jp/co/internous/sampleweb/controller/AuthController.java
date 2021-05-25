@@ -28,6 +28,11 @@ public class AuthController {
 	@Autowired
 	private LoginSession loginSession;
 		
+	/**
+	 * ログイン処理をおこなう。
+	 * @param f ユーザーフォーム
+	 * @return ログインしたユーザー情報(JSON形式)
+	 */
 	@RequestMapping("/login")
 	public String login(@RequestBody UserForm f) {
 		MstUser user = userMapper.findByUserNameAndPassword(f.getUserName(), f.getPassword());
@@ -57,6 +62,10 @@ public class AuthController {
 		return gson.toJson(user);
 	}
 	
+	/**
+	 * ログアウト処理をおこなう。
+	 * @return 空文字
+	 */
 	@RequestMapping("/logout")
 	public String logout() {
 		loginSession.setTmpUserId(0);
@@ -68,6 +77,11 @@ public class AuthController {
 		return "";
 	}
 
+	/**
+	 * パスワード再設定をおこなう。
+	 * @param f ユーザーフォーム
+	 * @return 処理後のメッセージ
+	 */
 	@RequestMapping("/resetPassword")
 	public String resetPassword(@RequestBody UserForm f) {
 		String message = "パスワードが再設定されました。";
