@@ -88,7 +88,6 @@ function deleteCart(checkedList, checkedIdList) {
 		type: 'POST',
 		url: '/sampleweb/cart/delete',
 		data: JSON.stringify({'checkedIdList': checkedIdList}),
-		datatype: 'json',
 		contentType: 'application/json',
 	})
 	.then((result) => {

@@ -63,7 +63,6 @@ const dialogConfig = {
 						url: '/sampleweb/user/register',
 						data: JSON.stringify(jsonString),
 						contentType: 'application/json',
-						datatype: 'json',
 						scriptCharset: 'utf-8'
 					})
 					.then((result) => {
@@ -180,7 +179,6 @@ const dialogConfig = {
 						url: '/sampleweb/destination/register',
 						data: JSON.stringify(jsonString),
 						contentType: 'application/json',
-						datatype: 'json',
 						scriptCharset: 'utf-8'
 					})
 					.then((result) => {
@@ -214,7 +212,6 @@ function settlement(destinationId) {
 		type: 'POST',
 		url: '/sampleweb/settlement/complete',
 		data: JSON.stringify({'destinationId': destinationId}),
-		datatype: 'json',
 		contentType: 'application/json',
 	})
 	.then((result) => {

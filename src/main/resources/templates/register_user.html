@@ -148,7 +148,6 @@ function checkUserName(userName) {
 		type: 'POST',
 		url: '/sampleweb/user/duplicatedUserName',
 		data: JSON.stringify({'userName': userName}),
-		datatype: 'json',
 		contentType: 'application/json',
 	})
 	.then((result) => {

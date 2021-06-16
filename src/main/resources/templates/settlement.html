@@ -67,7 +67,6 @@ function deleteDestination(destinationId, checked) {
 		type: 'POST',
 		url: '/sampleweb/destination/delete',
 		data: JSON.stringify({'destinationId': destinationId}),
-		datatype: 'json',
 		contentType: 'application/json',
 	})
 	.then((result) => {
