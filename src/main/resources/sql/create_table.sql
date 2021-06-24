@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS mst_destination (
  user_id INT(11) NOT NULL,
  family_name VARCHAR(255) NOT NULL,
  first_name VARCHAR(255) NOT NULL,
- tel_number VARCHAR(13),
+ tel_number VARCHAR(13) NOT NULL,
  address VARCHAR(255) NOT NULL,
  status TINYINT(1) NOT NULL DEFAULT 1,
  created_at TIMESTAMP NOT NULL default now(),
